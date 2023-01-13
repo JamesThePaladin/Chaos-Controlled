@@ -10,15 +10,15 @@ using Random = UnityEngine.Random;
 [SerializeField, Inspectable]
 public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {
-    [SerializeField, Inspectable] //Header("Generation Data"), SerializeField,
-    private int minRoomWidth = 4, minRoomHeight = 4;
-    [SerializeField, Inspectable] //SerializeField
-    private int dungeonWidth = 20, dungeonHeight = 20;
-    [SerializeField, Inspectable, Range(0,10)] //SerializeField
-    private int offset = 1;
-    [SerializeField, Inspectable] //SerializeField
-    private bool usingRandomWalkRooms = false;
-    private bool isGameStart = false;
+    [Inspectable] //Header("Generation Data"), SerializeField,
+    public int minRoomWidth = 4, minRoomHeight = 4;
+    [Inspectable] //SerializeField
+    public int dungeonWidth = 20, dungeonHeight = 20;
+    [Inspectable, Range(0,10)] //SerializeField
+    public int offset = 1;
+    [Inspectable] //SerializeField
+    public bool usingRandomWalkRooms = false;
+    public bool isGameStart = false;
 
     protected override void RunProceduralGeneration()
     {
