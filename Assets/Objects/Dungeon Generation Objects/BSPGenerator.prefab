@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3679576441374211749}
   - component: {fileID: 3679576441374211748}
+  - component: {fileID: 2441314316604353145}
   m_Layer: 0
   m_Name: BSPGenerator
-  m_TagString: Untagged
+  m_TagString: PCGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,18 +48,18 @@ MonoBehaviour:
   tilemapVisualizer: {fileID: 0}
   startPosition: {x: 0, y: 0}
   randomWalkParameters: {fileID: 11400000, guid: 65b50428678b65c41a27cf0e2d79008b, type: 2}
-  minRoomWidth: 10
-  minRoomHeight: 10
-  dungeonWidth: 70
-  dungeonHeight: 70
-  offset: 1
-  usingRandomWalkRooms: 1
-  isGameStart: 1
-  player: {fileID: 7000120738982867085, guid: 76f97ae36b705b347a521faa65723723, type: 3}
-  playerController: {fileID: 2345639487251089676, guid: e56808bf5c2723342b314abd12feaff6, type: 3}
-  enemies:
-  - {fileID: 4408885379204864442, guid: cc34096c60d3ea9499b60021a7dca5e8, type: 3}
-  - {fileID: 1035044813323207063, guid: ba4e92d5288b7844ba22c9fa1e155c5b, type: 3}
-  - {fileID: 8997331124596448046, guid: 415473fec93bd944b9dd00231722b492, type: 3}
-  currentEnemies: []
-  maxEnemies: 10
+--- !u!114 &2441314316604353145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679576441374211751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
