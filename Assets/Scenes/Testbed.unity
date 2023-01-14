@@ -128,17 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3679576441374211751, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
   m_PrefabInstance: {fileID: 804603351}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &172660827 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
-  m_PrefabInstance: {fileID: 804603351}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172660826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e4d7a7582052842b1f625bded0165e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &172660829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 2441314316604353145, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
       propertyPath: _data._objectReferences.Array.data[0]
       value: 
-      objectReference: {fileID: 172660827}
+      objectReference: {fileID: 0}
     - target: {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
       propertyPath: dungeonWidth
       value: 1
@@ -471,7 +460,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BSPGenerator
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
 --- !u!1001 &1208631515
 PrefabInstance:

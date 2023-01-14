@@ -39,9 +39,9 @@ public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         //add the room positions set to the floor positions, because they are now part of the floor
         floorPositions.UnionWith(roomPositions);
         //paint the floors in the corridor
-        tilemapVisualizer.PaintFloorTiles(floorPositions);
+        _tilemapVisualizer.PaintFloorTiles(floorPositions);
         //paint the walls in the corridor
-        WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+        WallGenerator.CreateWalls(floorPositions, _tilemapVisualizer);
     }
 
     /// <summary>

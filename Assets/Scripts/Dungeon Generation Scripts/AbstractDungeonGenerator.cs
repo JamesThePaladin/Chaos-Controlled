@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class AbstractDungeonGenerator : Unit
 {
     [SerializeField]
-    protected TilemapVisualizer tilemapVisualizer = null;
+    protected TilemapVisualizer _tilemapVisualizer = null;
     [SerializeField]
     protected Vector2Int startPosition = Vector2Int.zero;
 
@@ -27,7 +27,7 @@ public abstract class AbstractDungeonGenerator : Unit
     //abstract method for generating dungeons
     public void GenerateDungeon() 
     {
-        tilemapVisualizer.Clear();
+        _tilemapVisualizer.Clear();
         RunProceduralGeneration();
     }
 

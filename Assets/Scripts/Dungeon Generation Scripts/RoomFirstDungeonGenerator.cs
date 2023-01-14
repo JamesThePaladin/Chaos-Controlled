@@ -7,18 +7,67 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
-[SerializeField, Inspectable]
 public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {
-    [Inspectable] //Header("Generation Data"), SerializeField,
-    public int minRoomWidth = 4, minRoomHeight = 4;
-    [Inspectable] //SerializeField
-    public int dungeonWidth = 20, dungeonHeight = 20;
-    [Inspectable, Range(0,10)] //SerializeField
-    public int offset = 1;
-    [Inspectable] //SerializeField
-    public bool usingRandomWalkRooms = false;
-    public bool isGameStart = false;
+    //generation parameters
+    private int _minRoomWidth = 4, _minRoomHeight = 4;
+    private int _dungeonWidth = 20, _dungeonHeight = 20;
+    private int _offset = 1;
+    private bool _usingRandomWalkRooms = false;
+
+    //node ports
+    [DoNotSerialize]
+    public ValueInput minRoomWidth;
+    [DoNotSerialize]
+    public ValueInput minRoomHeight;
+    [DoNotSerialize]
+    public ValueInput dungeonWidth;
+    [DoNotSerialize]
+    public ValueInput dungeonHeight;
+    [DoNotSerialize]
+    public ValueInput offset;
+    [DoNotSerialize]
+    public ValueInput usingRandomWalkRooms;
+    [DoNotSerialize]
+    public ValueInput tilemapVisualizer;
+
+    protected override void Definition()
+    {
+        //Making the ControlInput port visible, setting its key and running the anonymous action method to pass the flow to the outputTrigger port.
+        inputTrigger = ControlInput("inputTrigger", (flow) =>
+        {
+            _minRoomWidth = flow.GetValue<int>(minRoomWidth);
+            _minRoomHeight = flow.GetValue<int>(minRoomHeight);
+            _dungeonWidth = flow.GetValue<int>(dungeonWidth);
+            _dungeonHeight = flow.GetValue<int>(dungeonHeight);
+            _offset = flow.GetValue<int>(offset);
+            _usingRandomWalkRooms = flow.GetValue<bool>(usingRandomWalkRooms);
+            _tilemapVisualizer = flow.GetValue<TilemapVisualizer>(tilemapVisualizer);
+            GenerateDungeon();
+            return outputTrigger; 
+        });
+        //Making the ControlOutput port visible and setting its key.
+        outputTrigger = ControlOutput("outputTrigger");
+
+        //Making Input ports visible, setting labels and defaults
+        minRoomWidth = ValueInput<int>("MinRoomWidth", 4);
+        minRoomHeight = ValueInput<int>("MinRoomHeight", 4);
+        dungeonWidth = ValueInput<int>("DungeonWidth", 20);
+        dungeonHeight = ValueInput<int>("DungeonHeight", 20);
+        offset = ValueInput<int>("Offset", 1);
+        tilemapVisualizer = ValueInput<TilemapVisualizer>("Tilemap Visualizer", null);
+        usingRandomWalkRooms = ValueInput<bool>("UseRandomWalkRooms", false);
+
+        //relations
+        Requirement(minRoomWidth, inputTrigger);
+        Requirement(minRoomHeight, inputTrigger);
+        Requirement(dungeonWidth, inputTrigger);
+        Requirement(dungeonHeight, inputTrigger);
+        Requirement(offset, inputTrigger);
+        Requirement(usingRandomWalkRooms, inputTrigger);
+        Requirement(tilemapVisualizer, inputTrigger);
+        Succession(inputTrigger, outputTrigger);
+    }
 
     protected override void RunProceduralGeneration()
     {
@@ -29,12 +78,12 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     {
         //create our dungeon to begin BSP generation
         var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, 
-            new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
+            new Vector3Int(_dungeonWidth, _dungeonHeight, 0)), _minRoomWidth, _minRoomHeight);
 
         //create a new hash set to store our floor positions
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         //if we are using random walk rooms
-        if (usingRandomWalkRooms) 
+        if (_usingRandomWalkRooms) 
         {
             //create random walk rooms and add them to our floor set
             floor = CreateRandomWalkRooms(roomsList);
@@ -57,9 +106,9 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         //add the corridors to the floor set since they are now floors
         floor.UnionWith(corridors);
         //have the tilemapvisualizer paint it for view in editor
-        tilemapVisualizer.PaintFloorTiles(floor);
+        _tilemapVisualizer.PaintFloorTiles(floor);
         //pass our wall generator our floors and tilemap visualizer
-        WallGenerator.CreateWalls(floor, tilemapVisualizer);
+        WallGenerator.CreateWalls(floor, _tilemapVisualizer);
     }
 
     private HashSet<Vector2Int> CreateRandomWalkRooms(List<BoundsInt> roomsList)
@@ -79,8 +128,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             foreach (var position in roomFloor)
             {
                 //if it is within bounds and offset
-                if (position.x >= (roomBounds.xMin + offset) && position.x <= (roomBounds.xMax - offset)
-                    && position.y >= (roomBounds.yMin - offset) && position.y <= (roomBounds.yMax - offset)) 
+                if (position.x >= (roomBounds.xMin + _offset) && position.x <= (roomBounds.xMax - _offset)
+                    && position.y >= (roomBounds.yMin - _offset) && position.y <= (roomBounds.yMax - _offset)) 
                 {
                     //add it to our floor set
                     floor.Add(position);
@@ -191,10 +240,10 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         foreach (var room in roomsList)
         {
             //iterate through each column minus the offset
-            for (int col = offset; col < room.size.x - offset; col++)
+            for (int col = _offset; col < room.size.x - _offset; col++)
             {
                 //iterate through each row minus the offset
-                for (int row = offset; row < room.size.y - offset; row++)
+                for (int row = _offset; row < room.size.y - _offset; row++)
                 {
                     //create a new position at each point in the room
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);

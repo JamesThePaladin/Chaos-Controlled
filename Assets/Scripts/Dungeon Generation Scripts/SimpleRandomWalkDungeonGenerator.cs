@@ -9,19 +9,22 @@ using Random = UnityEngine.Random;
 
 public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
 {
-    [SerializeField, Inspectable]
     protected SimpleRandomWalkSO randomWalkParameters;
+
+    protected override void Definition()
+    {
+        //Making the ControlInput port visible, setting its key and running the anonymous action method to pass the flow to the outputTrigger port.
+        inputTrigger = ControlInput("inputTrigger", (flow) => { return outputTrigger; });
+        //Making the ControlOutput port visible and setting its key.
+        outputTrigger = ControlOutput("outputTrigger");
+    }
 
     protected override void RunProceduralGeneration()
     {
         //run the random walk and store the floor positions in our hash set
         HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
-        //Clear all floor tiles
-        tilemapVisualizer.Clear();
-        //use the tilemap visualizer to paint the floor tiles at the generated positions
-        tilemapVisualizer.PaintFloorTiles(floorPositions);
         //paint walls by passing in our floor positions and tilemap visualizer reference
-        WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+        WallGenerator.CreateWalls(floorPositions, _tilemapVisualizer);
     }
 
     protected HashSet<Vector2Int> RunRandomWalk(SimpleRandomWalkSO parameters, Vector2Int position)
