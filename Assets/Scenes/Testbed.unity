@@ -393,15 +393,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2441314316604353145, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
       propertyPath: _data._json
-      value: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Min
-        Room Width","value":{"$content":4,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Min
-        Room Height","value":{"$content":4,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Dungeon
-        Width","value":{"$content":20,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"Dungeon
-        Height","value":{"$content":20,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      value: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
       objectReference: {fileID: 0}
     - target: {fileID: 2441314316604353145, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
       propertyPath: _data._objectReferences.Array.size
@@ -411,6 +403,22 @@ PrefabInstance:
       propertyPath: _data._objectReferences.Array.data[0]
       value: 
       objectReference: {fileID: 172660827}
+    - target: {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
+      propertyPath: dungeonWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
+      propertyPath: minRoomWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
+      propertyPath: dungeonHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
+      propertyPath: minRoomHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3679576441374211748, guid: 2f61376bf672e07448dd70b0718c2618, type: 3}
       propertyPath: tilemapVisualizer
       value: 
@@ -658,19 +666,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Size.x
-      value: 70
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Size.y
-      value: 67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Origin.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Tiles.Array.size
-      value: 2004
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileAssetArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileColorArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileMatrixArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileSpriteArray.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991965454506, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Tiles.Array.data[0].first.x
@@ -24234,19 +24258,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Size.x
-      value: 71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Size.y
-      value: 69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Origin.y
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Tiles.Array.size
-      value: 849
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileAssetArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileColorArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileMatrixArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
+      propertyPath: m_TileSpriteArray.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8161974991975191666, guid: 3509221caf256c748bd271d344f87edc, type: 3}
       propertyPath: m_Tiles.Array.data[0].first.x

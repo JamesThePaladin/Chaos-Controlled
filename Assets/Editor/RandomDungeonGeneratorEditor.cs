@@ -12,7 +12,7 @@ public class RandomDungeonGeneratorEditor : Editor
     //fill our reference on awake
     private void Awake()
     {
-        generator = (AbstractDungeonGenerator)target;
+        //generator = (AbstractDungeonGenerator)target;
     }
 
     public override void OnInspectorGUI()
