@@ -2,15 +2,53 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {
-    [SerializeField]
-    private int corridorLength = 14, corridorCount = 5; //length and number of corridors
-    [SerializeField, Range(0.1f, 1f)]
-    private float roomPercent = 0.8f; //percent of rooms we create
+    private int _corridorLength = 14, _corridorCount = 5; //length and number of corridors
+    private float _roomPercent = 0.8f; //percent of rooms we create
 
+    [DoNotSerialize]
+    public ValueInput corridorLength;
+    [DoNotSerialize]
+    public ValueInput corridorCount;
+    [DoNotSerialize]
+    public ValueInput roomPercent;
+    [DoNotSerialize]
+    public ValueInput randomWalkParameters;
+    [DoNotSerialize]
+    public ValueInput tilemapVisualizer;
+
+    protected override void Definition() 
+    {
+        //Making the ControlInput port visible, setting its key and running the anonymous action method to pass the flow to the outputTrigger port.
+        inputTrigger = ControlInput("inputTrigger", (flow) => 
+        {
+            _corridorLength = flow.GetValue<int>(corridorLength);
+            _corridorCount = flow.GetValue<int>(corridorCount);
+            _roomPercent = flow.GetValue<float>(roomPercent);
+            _randomWalkParameters = flow.GetValue<SimpleRandomWalkSO>(randomWalkParameters);
+            _tilemapVisualizer = flow.GetValue<TilemapVisualizer>(tilemapVisualizer);
+            GenerateDungeon();
+            return outputTrigger; 
+        });
+        //Making the ControlOutput port visible and setting its key.
+        outputTrigger = ControlOutput("outputTrigger");
+        //visibility, defaults and labels
+        corridorLength = ValueInput<int>("Corridor Length", 14);
+        corridorCount = ValueInput<int>("Corridor Count", 5);
+        roomPercent = ValueInput<float>("Room Percent", 0.8f);
+        tilemapVisualizer = ValueInput<TilemapVisualizer>("Tilemap Visualizer", null);
+        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkSCriptableObject", null);
+        //relations
+        Requirement(corridorLength, inputTrigger);
+        Requirement(corridorCount, inputTrigger);
+        Requirement(roomPercent, inputTrigger);
+        Requirement(randomWalkParameters, inputTrigger);
+        Requirement(tilemapVisualizer, inputTrigger);
+    }
     /// <summary>
     /// Override of RunProceduralGeneration that creates corridors first
     /// </summary>
@@ -104,7 +142,7 @@ public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         HashSet<Vector2Int> roomPositions = new HashSet<Vector2Int>();
         //get the amount of rooms to create by multiplying our prp count 
         //by our room percentage and round to an int
-        int roomsToCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count * roomPercent);
+        int roomsToCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count * _roomPercent);
         //create a list of rooms to create out of our prp and order them using GUIDs for random selection
         List<Vector2Int> roomsToCreate = potentialRoomPositions.OrderBy(x => Guid.NewGuid()).Take(roomsToCreateCount).ToList();
         //for each room position in rooms to create
@@ -125,10 +163,10 @@ public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         //add the start of each corridor to the set of potential room positions
         potentialRoomPositions.Add(currentPosition);
         //for the number of corridors specified
-        for (int i = 0; i < corridorCount; i++)
+        for (int i = 0; i < _corridorCount; i++)
         {
             //generate a random walk corridor 
-            var corridor = ProceduralGenerationAlgorithms.RandomWalkCorridor(currentPosition, corridorLength);
+            var corridor = ProceduralGenerationAlgorithms.RandomWalkCorridor(currentPosition, _corridorLength);
             //set our current position to the last corridor in our count
             currentPosition = corridor[corridor.Count - 1];
             //add each end of a corridor to prp set
