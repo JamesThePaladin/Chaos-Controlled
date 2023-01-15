@@ -16,10 +16,6 @@ public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     public ValueInput corridorCount;
     [DoNotSerialize]
     public ValueInput roomPercent;
-    [DoNotSerialize]
-    public ValueInput randomWalkParameters;
-    [DoNotSerialize]
-    public ValueInput tilemapVisualizer;
 
     protected override void Definition() 
     {

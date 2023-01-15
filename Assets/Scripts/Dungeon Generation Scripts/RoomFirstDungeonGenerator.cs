@@ -27,11 +27,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     [DoNotSerialize]
     public ValueInput offset;
     [DoNotSerialize]
-    public ValueInput randomWalkParameters;
-    [DoNotSerialize]
     public ValueInput usingRandomWalkRooms;
-    [DoNotSerialize]
-    public ValueInput tilemapVisualizer;
 
     protected override void Definition()
     {

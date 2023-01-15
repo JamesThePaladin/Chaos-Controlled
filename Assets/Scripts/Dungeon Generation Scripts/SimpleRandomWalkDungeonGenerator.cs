@@ -11,16 +11,29 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
 {
     protected SimpleRandomWalkSO _randomWalkParameters;
 
+    [DoNotSerialize]
+    public ValueInput randomWalkParameters;
+    [DoNotSerialize]
+    public ValueInput tilemapVisualizer;
 
     protected override void Definition()
     {
         //Making the ControlInput port visible, setting its key and running the anonymous action method to pass the flow to the outputTrigger port.
         inputTrigger = ControlInput("inputTrigger", (flow) => 
         {
+            _randomWalkParameters = flow.GetValue<SimpleRandomWalkSO>(randomWalkParameters);
+            _tilemapVisualizer = flow.GetValue<TilemapVisualizer>(tilemapVisualizer);
+            GenerateDungeon();
             return outputTrigger; 
         });
         //Making the ControlOutput port visible and setting its key.
         outputTrigger = ControlOutput("outputTrigger");
+        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkSCriptableObject", null);
+        tilemapVisualizer = ValueInput<TilemapVisualizer>("Tilemap Visualizer", null);
+
+        //relations
+        Requirement(randomWalkParameters, inputTrigger);
+        Requirement(tilemapVisualizer, inputTrigger);
     }
 
     protected override void RunProceduralGeneration()
