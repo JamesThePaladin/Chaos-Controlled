@@ -9,12 +9,16 @@ using Random = UnityEngine.Random;
 
 public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
 {
-    protected SimpleRandomWalkSO randomWalkParameters;
+    protected SimpleRandomWalkSO _randomWalkParameters;
+
 
     protected override void Definition()
     {
         //Making the ControlInput port visible, setting its key and running the anonymous action method to pass the flow to the outputTrigger port.
-        inputTrigger = ControlInput("inputTrigger", (flow) => { return outputTrigger; });
+        inputTrigger = ControlInput("inputTrigger", (flow) => 
+        {
+            return outputTrigger; 
+        });
         //Making the ControlOutput port visible and setting its key.
         outputTrigger = ControlOutput("outputTrigger");
     }
@@ -22,7 +26,7 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
     protected override void RunProceduralGeneration()
     {
         //run the random walk and store the floor positions in our hash set
-        HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
+        HashSet<Vector2Int> floorPositions = RunRandomWalk(_randomWalkParameters, startPosition);
         //paint walls by passing in our floor positions and tilemap visualizer reference
         WallGenerator.CreateWalls(floorPositions, _tilemapVisualizer);
     }
@@ -34,15 +38,15 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
         //create hash set for our floor positions
         HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
         //iterate over the number of iterations we have and run our random walk algorithm
-        for (int i = 0; i < randomWalkParameters.iterations; i++)
+        for (int i = 0; i < _randomWalkParameters.iterations; i++)
         {
             //run the simple random walk algorithm, passing in our current position and walk length
-            var path = ProceduralGenerationAlgorithms.SimpleRandomWalk(currentPosition, randomWalkParameters.walkLength);
+            var path = ProceduralGenerationAlgorithms.SimpleRandomWalk(currentPosition, _randomWalkParameters.walkLength);
             //Add this new path to our floor positions hash set without the duplicates
             floorPositions.UnionWith(path);
             //if start randomly each iteration is on select a random element
             //of our floor positions hash set to start our walk at again
-            if (randomWalkParameters.startRandomlyEachIteration) 
+            if (_randomWalkParameters.startRandomlyEachIteration) 
             {
                 //select a random element of our floor positions hash set
                 //and set our current position equal to it for a "random" iteration start

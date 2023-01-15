@@ -58,7 +58,7 @@ public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             if (roomFloors.Contains(position) == false) 
             {
                 //make a room there using the SO parameters
-                var room = RunRandomWalk(randomWalkParameters, position);
+                var room = RunRandomWalk(_randomWalkParameters, position);
                 //add this room's floors to the roomFloors set
                 roomFloors.UnionWith(room);
             }
@@ -111,7 +111,7 @@ public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         foreach (var roomPosition in roomsToCreate)
         {
             //generate a random walk room at the room position according to parameters object
-            var roomFloor = RunRandomWalk(randomWalkParameters, roomPosition);
+            var roomFloor = RunRandomWalk(_randomWalkParameters, roomPosition);
             //add to room positions set without duplicates
             roomPositions.UnionWith(roomFloor);
         }

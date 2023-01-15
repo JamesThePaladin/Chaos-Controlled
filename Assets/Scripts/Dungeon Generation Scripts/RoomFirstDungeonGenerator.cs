@@ -27,6 +27,8 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     [DoNotSerialize]
     public ValueInput offset;
     [DoNotSerialize]
+    public ValueInput randomWalkParameters;
+    [DoNotSerialize]
     public ValueInput usingRandomWalkRooms;
     [DoNotSerialize]
     public ValueInput tilemapVisualizer;
@@ -41,6 +43,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             _dungeonWidth = flow.GetValue<int>(dungeonWidth);
             _dungeonHeight = flow.GetValue<int>(dungeonHeight);
             _offset = flow.GetValue<int>(offset);
+            _randomWalkParameters = flow.GetValue<SimpleRandomWalkSO>(randomWalkParameters);
             _usingRandomWalkRooms = flow.GetValue<bool>(usingRandomWalkRooms);
             _tilemapVisualizer = flow.GetValue<TilemapVisualizer>(tilemapVisualizer);
             GenerateDungeon();
@@ -56,6 +59,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         dungeonHeight = ValueInput<int>("DungeonHeight", 20);
         offset = ValueInput<int>("Offset", 1);
         tilemapVisualizer = ValueInput<TilemapVisualizer>("Tilemap Visualizer", null);
+        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkSCriptableObject", null);
         usingRandomWalkRooms = ValueInput<bool>("UseRandomWalkRooms", false);
 
         //relations
@@ -64,6 +68,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         Requirement(dungeonWidth, inputTrigger);
         Requirement(dungeonHeight, inputTrigger);
         Requirement(offset, inputTrigger);
+        Requirement(randomWalkParameters, inputTrigger);
         Requirement(usingRandomWalkRooms, inputTrigger);
         Requirement(tilemapVisualizer, inputTrigger);
         Succession(inputTrigger, outputTrigger);
@@ -123,7 +128,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             //find its center
             var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
             //create a room at the center according to the random walk scriptable object selected
-            var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
+            var roomFloor = RunRandomWalk(_randomWalkParameters, roomCenter);
             //for each floor position in our room floor set
             foreach (var position in roomFloor)
             {
