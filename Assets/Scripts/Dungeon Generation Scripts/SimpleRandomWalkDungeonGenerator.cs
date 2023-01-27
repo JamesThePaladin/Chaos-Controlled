@@ -40,6 +40,8 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
     {
         //run the random walk and store the floor positions in our hash set
         HashSet<Vector2Int> floorPositions = RunRandomWalk(_randomWalkParameters, startPosition);
+        //paint floors by passing in our floor positions
+        _tilemapVisualizer.PaintFloorTiles(floorPositions);
         //paint walls by passing in our floor positions and tilemap visualizer reference
         WallGenerator.CreateWalls(floorPositions, _tilemapVisualizer);
     }

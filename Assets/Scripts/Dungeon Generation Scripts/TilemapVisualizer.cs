@@ -65,7 +65,7 @@ public class TilemapVisualizer : Unit
         _wallDiagonalCornerDownLeft = ValueInput<TileBase>("Wall Diag Corner Down Left", null);
         _wallDiagonalCornerUpRight = ValueInput<TileBase>("Wall Diag Corner Up Right", null);
         _wallDiagonalCornerUpLeft = ValueInput<TileBase>("Wall Diag Corner Up Left", null);
-        tilemapVisualizer = ValueOutput<TilemapVisualizer>("TilemapVisualizer"); //TODO: Fix this tilemap assignment stuff
+        tilemapVisualizer = ValueOutput<TilemapVisualizer>("TilemapVisualizer", (flow) => { return this; }); //TODO: Fix this tilemap assignment stuff
 
         //relations
         Requirement(_floorTilemap, inputTrigger);
