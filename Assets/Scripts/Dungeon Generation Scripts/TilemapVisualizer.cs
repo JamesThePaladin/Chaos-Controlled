@@ -5,14 +5,84 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilemapVisualizer : MonoBehaviour
+public class TilemapVisualizer : Unit
 {
+    //tile parameters
     [SerializeField]
     private Tilemap floorTilemap, wallTilemap; //tilemap for our floor
     [SerializeField]
     private TileBase floorTile, wallTop, wallRight, wallLeft, wallBottom, wallFull, 
         wallInnerCornerDownLeft, wallInnerCornerDownRight, 
         wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft; //tiles for all of tilemaps
+
+    //node ports
+    [DoNotSerialize]
+    public ValueInput _floorTilemap, _wallTilemap, _floorTile, _wallTop, _wallRight, _wallLeft, _wallBottom, _wallFull,
+        _wallInnerCornerDownLeft, _wallInnerCornerDownRight, _wallDiagonalCornerDownRight, _wallDiagonalCornerDownLeft, 
+        _wallDiagonalCornerUpRight, _wallDiagonalCornerUpLeft;
+    [DoNotSerialize]
+    public ValueOutput tilemapVisualizer;
+    [DoNotSerialize]
+    public ControlInput inputTrigger;
+    [DoNotSerialize]
+    public ControlOutput outputTrigger;
+    protected override void Definition()
+    {
+        //Making the ControlInput port visible, setting its key and running the anonymous action method to pass the flow to the outputTrigger port.
+        inputTrigger = ControlInput("inputTrigger", (flow) => 
+        {
+            floorTilemap = flow.GetValue<Tilemap>(_floorTilemap);
+            wallTilemap = flow.GetValue<Tilemap>(_wallTilemap);
+            floorTile = flow.GetValue<TileBase>(_floorTile);
+            wallTop = flow.GetValue<TileBase>(_wallTop);
+            wallRight = flow.GetValue<TileBase>(_wallRight);
+            wallLeft = flow.GetValue<TileBase>(_wallLeft);
+            wallBottom = flow.GetValue<TileBase>(_wallBottom);
+            wallFull = flow.GetValue<TileBase>(_wallFull);
+            wallInnerCornerDownLeft = flow.GetValue<TileBase>(_wallInnerCornerDownLeft);
+            wallInnerCornerDownRight = flow.GetValue<TileBase>(_wallInnerCornerDownRight);
+            wallDiagonalCornerDownRight = flow.GetValue<TileBase>(_wallDiagonalCornerDownRight);
+            wallDiagonalCornerDownLeft = flow.GetValue<TileBase>(_wallDiagonalCornerDownLeft);
+            wallDiagonalCornerUpRight = flow.GetValue<TileBase>(_wallDiagonalCornerUpRight);
+            wallDiagonalCornerUpLeft = flow.GetValue<TileBase>(_wallDiagonalCornerUpLeft);
+            return outputTrigger;
+        });
+        //Making the ControlOutput port visible and setting its key.
+        outputTrigger = ControlOutput("outputTrigger");
+
+        //set values and labels to make visible
+        _floorTilemap = ValueInput<Tilemap>("Floor Tilemap", null);
+        _wallTilemap = ValueInput<Tilemap>("Wall Tilemap", null);
+        _floorTile = ValueInput<TileBase>("Floor Tile", null);
+        _wallTop = ValueInput<TileBase>("Wall Top", null);
+        _wallRight = ValueInput<TileBase>("Wall Right", null);
+        _wallLeft = ValueInput<TileBase>("Wall Left", null);
+        _wallBottom = ValueInput<TileBase>("Wall Bottom", null);
+        _wallFull = ValueInput<TileBase>("Wall Full", null);
+        _wallInnerCornerDownLeft = ValueInput<TileBase>("Wall Inner Corner Down Left", null);
+        _wallInnerCornerDownRight = ValueInput<TileBase>("Wall Inner Corner Down Right", null);
+        _wallDiagonalCornerDownRight = ValueInput<TileBase>("Wall Diag Corner Down Right", null);
+        _wallDiagonalCornerDownLeft = ValueInput<TileBase>("Wall Diag Corner Down Left", null);
+        _wallDiagonalCornerUpRight = ValueInput<TileBase>("Wall Diag Corner Up Right", null);
+        _wallDiagonalCornerUpLeft = ValueInput<TileBase>("Wall Diag Corner Up Left", null);
+        tilemapVisualizer = ValueOutput<TilemapVisualizer>("TilemapVisualizer"); //TODO: Fix this tilemap assignment stuff
+
+        //relations
+        Requirement(_floorTilemap, inputTrigger);
+        Requirement(_wallTilemap, inputTrigger);
+        Requirement(_floorTile, inputTrigger);
+        Requirement(_wallTop, inputTrigger);
+        Requirement(_wallRight, inputTrigger);
+        Requirement(_wallLeft, inputTrigger);
+        Requirement(_wallBottom, inputTrigger);
+        Requirement(_wallFull, inputTrigger);
+        Requirement(_wallInnerCornerDownLeft, inputTrigger);
+        Requirement(_wallInnerCornerDownRight, inputTrigger);
+        Requirement(_wallDiagonalCornerDownRight, inputTrigger);
+        Requirement(_wallDiagonalCornerDownLeft, inputTrigger);
+        Requirement(_wallDiagonalCornerUpRight, inputTrigger);
+        Requirement(_wallDiagonalCornerUpLeft, inputTrigger);
+    }
 
     /// <summary>
     /// Paints all the floor tiles in a list
