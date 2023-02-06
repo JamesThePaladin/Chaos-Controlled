@@ -28,7 +28,7 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
         });
         //Making the ControlOutput port visible and setting its key.
         outputTrigger = ControlOutput("outputTrigger");
-        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkSCriptableObject", null);
+        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkScriptableObject", null);
         tilemapVisualizer = ValueInput<TilemapVisualizer>("Tilemap Visualizer", null);
 
         //relations

@@ -55,7 +55,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         dungeonHeight = ValueInput<int>("DungeonHeight", 20);
         offset = ValueInput<int>("Offset", 1);
         tilemapVisualizer = ValueInput<TilemapVisualizer>("Tilemap Visualizer", null);
-        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkSCriptableObject", null);
+        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkScriptableObject", null);
         usingRandomWalkRooms = ValueInput<bool>("UseRandomWalkRooms", false);
 
         //relations

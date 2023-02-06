@@ -16,11 +16,46 @@ MonoBehaviour:
     _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":"Chaos
       Controller CFG","summary":"A Chaos Controller for Corridor First generation.
       This generator will generate corridors first, and then draw rooms at the end
-      of them using the supplied Scriptable Object.","pan":{"x":139.4445,"y":-47.24606},"zoom":0.7,"elements":[{"_tilemapVisualizer":0,"startPosition":{},"defaultValues":{"Corridor
+      of them using the supplied Scriptable Object.","pan":{"x":139.4445,"y":-47.24606},"zoom":0.7,"elements":[{"_tilemapVisualizer":null,"startPosition":{},"defaultValues":{"Corridor
       Length":{"$content":14,"$type":"System.Int32"},"Corridor Count":{"$content":5,"$type":"System.Int32"},"Room
-      Percent":{"$content":0.8,"$type":"System.Single"},"Tilemap Visualizer":null,"RandomWalkSCriptableObject":null},"position":{"x":441.0,"y":-132.0},"guid":"39d71f01-e54c-4cc1-8af7-ba16ad72ddd8","$version":"A","$type":"CorridorsFirstDungeonGenerator","$id":"9"},{"type":"SimpleRandomWalkSO","value":{"$content":1,"$type":"UnityEngine.Object"},"defaultValues":{},"position":{"x":116.0,"y":53.0},"guid":"abd6df89-449d-4542-a515-1ae7b638b155","$version":"A","$type":"Unity.VisualScripting.Literal","$id":"11"},{"coroutine":false,"defaultValues":{"key":{"$content":"Space","$type":"UnityEngine.KeyCode"},"action":{"$content":"Down","$type":"Unity.VisualScripting.PressState"}},"position":{"x":-384.0,"y":-141.0},"guid":"30aa939c-da58-4f42-9028-8ab9374c2913","$version":"A","$type":"Unity.VisualScripting.OnKeyboardInput","$id":"13"},{"chainable":false,"member":{"name":"FindGameObjectWithTag","parameterTypes":["System.String"],"targetType":"UnityEngine.GameObject","targetTypeName":"UnityEngine.GameObject","$version":"A"},"defaultValues":{"%tag":{"$content":"Tilemap
-      Visualizer","$type":"System.String"}},"position":{"x":-173.0,"y":-136.0},"guid":"3de1499d-316b-4468-90c2-b4c2d222cfdb","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"15"},{"chainable":false,"member":{"name":"GetComponent","parameterTypes":["System.Type"],"targetType":"UnityEngine.GameObject","targetTypeName":"UnityEngine.GameObject","$version":"A"},"defaultValues":{"target":null,"%type":{"$content":"TilemapVisualizer","$type":"System.RuntimeType"}},"position":{"x":98.0,"y":-137.0},"guid":"2e889955-cf6e-4c91-9b8c-27af65b23c12","$version":"A","$type":"Unity.VisualScripting.InvokeMember","$id":"18"},{"sourceUnit":{"$ref":"13"},"sourceKey":"trigger","destinationUnit":{"$ref":"15"},"destinationKey":"enter","guid":"59f94cdf-5bce-40bc-8456-de6943feb849","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"15"},"sourceKey":"exit","destinationUnit":{"$ref":"18"},"destinationKey":"enter","guid":"58ff6467-1bb4-4c65-9b72-5bd64cda67a1","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"18"},"sourceKey":"exit","destinationUnit":{"$ref":"9"},"destinationKey":"inputTrigger","guid":"4c8aa96d-e031-48af-9c59-d9f25c13e847","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"11"},"sourceKey":"output","destinationUnit":{"$ref":"9"},"destinationKey":"RandomWalkSCriptableObject","guid":"7e14368e-9920-4a87-8075-43b85694b5a7","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"15"},"sourceKey":"result","destinationUnit":{"$ref":"18"},"destinationKey":"target","guid":"3a83c126-f75f-46fd-97b9-0b4098b308fe","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"18"},"sourceKey":"result","destinationUnit":{"$ref":"9"},"destinationKey":"Tilemap
-      Visualizer","guid":"1a2a0355-02d9-452a-98c8-a556413799e5","$type":"Unity.VisualScripting.ValueConnection"}],"$version":"A"}}'
+      Percent":{"$content":0.8,"$type":"System.Single"},"RandomWalkScriptableObject":null},"position":{"x":441.0,"y":-132.0},"guid":"39d71f01-e54c-4cc1-8af7-ba16ad72ddd8","$version":"A","$type":"CorridorsFirstDungeonGenerator","$id":"9"},{"type":"SimpleRandomWalkSO","value":{"$content":0,"$type":"UnityEngine.Object"},"defaultValues":{},"position":{"x":439.0,"y":85.0},"guid":"abd6df89-449d-4542-a515-1ae7b638b155","$version":"A","$type":"Unity.VisualScripting.Literal","$id":"11"},{"coroutine":false,"defaultValues":{"key":{"$content":"Space","$type":"UnityEngine.KeyCode"},"action":{"$content":"Down","$type":"Unity.VisualScripting.PressState"}},"position":{"x":-500.0,"y":-138.0},"guid":"30aa939c-da58-4f42-9028-8ab9374c2913","$version":"A","$type":"Unity.VisualScripting.OnKeyboardInput","$id":"13"},{"floorTilemap":null,"wallTilemap":null,"floorTile":1,"wallTop":2,"wallRight":3,"wallLeft":4,"wallBottom":5,"wallFull":6,"wallInnerCornerDownLeft":7,"wallInnerCornerDownRight":8,"wallDiagonalCornerDownRight":9,"wallDiagonalCornerDownLeft":10,"wallDiagonalCornerUpRight":11,"wallDiagonalCornerUpLeft":12,"defaultValues":{"Floor
+      Tilemap":null,"Wall Tilemap":null,"Floor Tile":{"$content":13,"$type":"UnityEngine.Object"},"Wall
+      Top":{"$content":14,"$type":"UnityEngine.Object"},"Wall Right":{"$content":15,"$type":"UnityEngine.Object"},"Wall
+      Left":{"$content":16,"$type":"UnityEngine.Object"},"Wall Bottom":{"$content":17,"$type":"UnityEngine.Object"},"Wall
+      Full":{"$content":18,"$type":"UnityEngine.Object"},"Wall Inner Corner Down
+      Left":{"$content":19,"$type":"UnityEngine.Object"},"Wall Inner Corner Down
+      Right":{"$content":20,"$type":"UnityEngine.Object"},"Wall Diag Corner Down
+      Right":{"$content":21,"$type":"UnityEngine.Object"},"Wall Diag Corner Down
+      Left":{"$content":22,"$type":"UnityEngine.Object"},"Wall Diag Corner Up Right":{"$content":23,"$type":"UnityEngine.Object"},"Wall
+      Diag Corner Up Left":{"$content":24,"$type":"UnityEngine.Object"}},"position":{"x":-208.0,"y":-141.0},"guid":"52413607-5879-4959-a5b3-5ab96b64e71a","$version":"A","$type":"TilemapVisualizer","$id":"15"},{"specifyFallback":false,"kind":"Object","defaultValues":{"name":{"$content":"Floor
+      Tilemap","$type":"System.String"},"object":null},"position":{"x":-499.0,"y":-19.0},"guid":"b1c99ae0-39a7-4edc-984f-3be5e0ecef32","$version":"A","$type":"Unity.VisualScripting.GetVariable","$id":"17"},{"specifyFallback":false,"kind":"Object","defaultValues":{"name":{"$content":"Wall
+      Tilemap","$type":"System.String"},"object":null},"position":{"x":-497.0,"y":105.0},"guid":"d476eb4d-a2c1-4186-86dc-3f7b8bb7ba03","$version":"A","$type":"Unity.VisualScripting.GetVariable","$id":"19"},{"sourceUnit":{"$ref":"15"},"sourceKey":"outputTrigger","destinationUnit":{"$ref":"9"},"destinationKey":"inputTrigger","guid":"2c1b33c0-ec2d-4638-ab37-00e5ebfb7e1a","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"13"},"sourceKey":"trigger","destinationUnit":{"$ref":"15"},"destinationKey":"inputTrigger","guid":"c838eaeb-a665-4743-8db7-732b3a11cf04","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"15"},"sourceKey":"TilemapVisualizer","destinationUnit":{"$ref":"9"},"destinationKey":"Tilemap
+      Visualizer","guid":"d04004b6-1714-485f-b9c8-c30d129688fe","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"17"},"sourceKey":"value","destinationUnit":{"$ref":"15"},"destinationKey":"Floor
+      Tilemap","guid":"70090dae-d272-4fbe-a97e-80d3ca3bd0bb","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"19"},"sourceKey":"value","destinationUnit":{"$ref":"15"},"destinationKey":"Wall
+      Tilemap","guid":"418978c2-5c70-4bd0-a260-31b8135e9206","$type":"Unity.VisualScripting.ValueConnection"},{"sourceUnit":{"$ref":"11"},"sourceKey":"output","destinationUnit":{"$ref":"9"},"destinationKey":"RandomWalkSCriptableObject","guid":"54e761cf-6649-4910-ac1b-288adb617dcc","$type":"Unity.VisualScripting.InvalidConnection"}],"$version":"A"}}'
     _objectReferences:
-    - {fileID: 0}
     - {fileID: 11400000, guid: 6e0a5c80cd7513b4283bfb3e67b62099, type: 2}
+    - {fileID: 11400000, guid: 471853985ed4b5242ad12af71ace0cf6, type: 2}
+    - {fileID: 11400000, guid: 22c9f328675568942a63b2770a6a63dc, type: 2}
+    - {fileID: 11400000, guid: 56a025a4f1e8ec14ebfa0c2300d95b8e, type: 2}
+    - {fileID: 11400000, guid: 0f895bfef3ebb4f4aacf3fac66196c1c, type: 2}
+    - {fileID: 11400000, guid: 17de16fed6ed8cc4fa8aed5e072ee432, type: 2}
+    - {fileID: 11400000, guid: 9bd9b91a7e97483419306d5b0c9c37ec, type: 2}
+    - {fileID: 11400000, guid: a4a8fd2caea494c45916e75fc21be5c2, type: 2}
+    - {fileID: 11400000, guid: 32fb4d0075b44bf43b045b03663afc2c, type: 2}
+    - {fileID: 11400000, guid: ece443381d8fc294f928c22650a87c24, type: 2}
+    - {fileID: 11400000, guid: f0876383a0a9e9f4a8f543d8515e12c0, type: 2}
+    - {fileID: 11400000, guid: 809171e13e7908f40a916074c244f08c, type: 2}
+    - {fileID: 11400000, guid: 990709a76d4f9124db8ca4026e79a932, type: 2}
+    - {fileID: 11400000, guid: 471853985ed4b5242ad12af71ace0cf6, type: 2}
+    - {fileID: 11400000, guid: 22c9f328675568942a63b2770a6a63dc, type: 2}
+    - {fileID: 11400000, guid: 56a025a4f1e8ec14ebfa0c2300d95b8e, type: 2}
+    - {fileID: 11400000, guid: 0f895bfef3ebb4f4aacf3fac66196c1c, type: 2}
+    - {fileID: 11400000, guid: 17de16fed6ed8cc4fa8aed5e072ee432, type: 2}
+    - {fileID: 11400000, guid: 9bd9b91a7e97483419306d5b0c9c37ec, type: 2}
+    - {fileID: 11400000, guid: a4a8fd2caea494c45916e75fc21be5c2, type: 2}
+    - {fileID: 11400000, guid: 32fb4d0075b44bf43b045b03663afc2c, type: 2}
+    - {fileID: 11400000, guid: ece443381d8fc294f928c22650a87c24, type: 2}
+    - {fileID: 11400000, guid: f0876383a0a9e9f4a8f543d8515e12c0, type: 2}
+    - {fileID: 11400000, guid: 809171e13e7908f40a916074c244f08c, type: 2}
+    - {fileID: 11400000, guid: 990709a76d4f9124db8ca4026e79a932, type: 2}

@@ -37,7 +37,7 @@ public class CorridorsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         corridorCount = ValueInput<int>("Corridor Count", 5);
         roomPercent = ValueInput<float>("Room Percent", 0.8f);
         tilemapVisualizer = ValueInput<TilemapVisualizer>("Tilemap Visualizer", null);
-        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkSCriptableObject", null);
+        randomWalkParameters = ValueInput<SimpleRandomWalkSO>("RandomWalkScriptableObject", null);
         //relations
         Requirement(corridorLength, inputTrigger);
         Requirement(corridorCount, inputTrigger);
